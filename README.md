@@ -1,4 +1,4 @@
-EX-21-POINTERS
+# EX-21-POINTERS
 # AIM:
 Write a C program to convert a 23.65 into 25 using pointer
 
@@ -9,26 +9,29 @@ Write a C program to convert a 23.65 into 25 using pointer
 4.	Print the modified value.
 
 ## PROGRAM:
+```
+#include <stdio.h>
+
+int main() {
+    double num = 23.65;
+    double *ptr;         
+
+    ptr = &num;
+
+    *ptr = 25.0; value
+
+    printf("The modified value is: %.2f\n", num);
+    return 0;
+}
+```
 
 ## OUTPUT:
- 	
-
-
-
-
-
-
-
-
-
-
+![image](https://github.com/user-attachments/assets/d1feb312-1277-4eb0-9f3f-4d9829939b37)
 
 ## RESULT:
 Thus the program to convert a 23.65 into 25 using pointer has been executed successfully.
  
  
-
-
 # EX-22-FUNCTIONS AND STORAGE CLASS
 
 ## AIM:
@@ -45,15 +48,35 @@ Write a C program to calculate the Product of first 12 natural numbers using Rec
 6.	Print the result, indicating it is the product of the first 12 natural numbers.
 
 ## PROGRAM:
+```
+#include <stdio.h>
+
+unsigned long long calculateProduct(int n) {
+    if (n == 1)
+        return 1;
+    else
+        return n * calculateProduct(n - 1);
+}
+
+int main() {
+    int n = 12;
+    unsigned long long product;
+
+    product = calculateProduct(n);
+
+    printf("The product of the first 12 natural numbers is: %llu\n", product);
+
+    return 0;
+}
+```
+
 ## OUTPUT:
+![image](https://github.com/user-attachments/assets/46a07adf-f96a-4f2d-8a65-ae526ebd138f)
          		
 ## RESULT:
-
 Thus the program has been executed successfully.
  
  
-
-
 # EX-23-ARRAYS AND ITS OPERATIONS
 
 ## AIM:
@@ -68,18 +91,35 @@ Write C Program to find Sum of each row of a Matrix
 4.	Print the sum for each row.
 
 ## PROGRAM:
+```
+#include <stdio.h>
 
+int main() {
+    int rows = 3, cols = 3;
+    int matrix[3][3] = {
+        {1, 2, 3},
+        {4, 5, 6},
+        {7, 8, 9}
+    };
 
+    for (int i = 0; i < rows; i++) {
+        int sum = 0;
+        for (int j = 0; j < cols; j++) {
+            sum += matrix[i][j];
+        }
+        printf("Sum of row %d = %d\n", i + 1, sum);
+    }
+
+    return 0;
+}
+```
 
 ## OUTPUT
-
-
- 
- 
+![image](https://github.com/user-attachments/assets/8c53fae5-904b-45ba-ae27-1dbd13457c3a)
 
  ## RESULT
+ Thus the above program is executed successfully
  
-
 
 # EX-24-STRINGS
 
@@ -96,22 +136,38 @@ Write C program for the below pyramid string pattern. Enter a string: PROGRAM En
 5.	End the program.
 
 ## PROGRAM:
+```
+#include <stdio.h>
+#include <string.h>
 
+int main() {
+    char str[100];
+    int num_rows, i, j, midpoint;
+    printf("Enter a string: ");
+    scanf("%s", str);
 
- ## OUTPUT
+    printf("Enter number of rows: ");
+    scanf("%d", &num_rows);
 
- 
+    int len = strlen(str);
+    midpoint = (2 * num_rows - 1) / 2;
+    for (i = 1; i <= num_rows; i++) {
+        for (j = 0; j < i; j++) {
+            printf("%c ", str[j % len]);
+        }
+        printf("\n");
+    }
+    return 0;
+}
+```
+
+## OUTPUT
+![image](https://github.com/user-attachments/assets/606a307f-e19f-462a-8f2a-9496a2bb90f1)
 
 ## RESULT
-
 Thus the C program to String process executed successfully
- 
 
  
-.
-
-
-
 # EX -25 –DISPLAYING ARRAYS USING POINTERS
 ## AIM
 
@@ -132,13 +188,37 @@ Step 5: Loop from i = 0 to i < n:
 Step 6: End the program.
 
 ## PROGRAM
+```
+#include <stdio.h>
+
+int main() {
+    int i, n;
+    int arr[10];  // Step 2: Declare array
+    int *parr = arr; // Initialize pointer to array
+    printf("Enter number of elements (up to 6): ");
+    scanf("%d", &n);
+
+    if (n > 6) {
+        printf("Please enter 6 or fewer elements.\n");
+        return 1;
+    }
+
+    printf("Enter %d elements:\n", n);
+    for (i = 0; i < n; i++) {
+        scanf("%d", (parr + i));
+    }
+    printf("The elements are:\n");
+    for (i = 0; i < n; i++) {
+        printf("%d ", *(parr + i));
+    }
+
+    printf("\n");
+    return 0;
+}
+```
 
 ## OUTPUT
-
- 
+![image](https://github.com/user-attachments/assets/438e24d6-76c8-4b76-b26d-4aff069d0959)
 
 ## RESULT
-
 Thus the C program to read and display an array of any 6 integer elements using pointer has been executed
-
-
